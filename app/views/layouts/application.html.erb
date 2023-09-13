@@ -35,6 +35,13 @@
       <% end %>
       </li>
       </ul>
+      <span class="navbar-text pull-right">
+      <% if user_signed_in? %>
+      <%= button_to "Logout", destroy_user_session_path, method: :delete, data: {turbo: false}, class: "btn btn-link" %>
+      <% else %>
+      <%= link_to "Login", new_user_session_path, class: "btn btn-link" %>
+      <% end %>
+      </span>
 
     </div>
   </div>
@@ -42,8 +49,8 @@
 
 <div class="container">
 
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <p class="text-success"><%= notice %></p>
+  <p class="text-danger"><%= alert %></p>
 
     <%= yield %>
     </div>
