@@ -12,14 +12,14 @@
   </head>
 
   <body class="d-flex flex-column h-100">
-  <nav class="navbar navbar-expand-lg bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Pdiary</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/ideas">Ideas</a>
         </li>
@@ -27,10 +27,24 @@
         <%= link_to "New idea", new_idea_path, class: "nav-link active" %>
         </li>
       </ul>
+
+      <ul class="nav">
+      <li class="nav-item">
+      <% if current_user.present? %>
+        <%= current_user.email %>
+      <% end %>
+      </li>
+      </ul>
+
     </div>
   </div>
 </nav>
+
 <div class="container">
+
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+
     <%= yield %>
     </div>
     <footer class="footer mt-auto py-3 bg-light">
